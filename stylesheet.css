@@ -5,14 +5,18 @@
 
 #feed{
     background-color: aqua;
-    width: 60%;
 }
 
 #profile{
     background-color: blue;
-    width: 40%;
 }
 
 h2{
     text-align: center;
+}
+
+#mainPage{
+    display: inline-grid;
+    width: 100%;
+    grid-template-columns: 60% 40%;
 }
