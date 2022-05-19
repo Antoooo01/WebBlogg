@@ -50,7 +50,6 @@ if(isset($_POST['Skapa'])){
 
     mysqli_query($conn, $addData);
 }
-
 //Login check
 if(isset($_POST['Inlogg'])){
     $user = $_POST['user'];
@@ -74,6 +73,28 @@ if(isset($_POST['Inlogg'])){
 
 }
 
+if(isset($_POST['Uppladdning'])){
+    //create post
+    $createFeed = "CREATE TABLE Feed(
+        title VARCHAR(25),
+        content VARCHAR(300)
+        )";
+
+    mysqli_query($conn, $createFeed);
+
+    //save and add input
+    $title = $_POST['title'];
+    $text = $_POST['text'];
+
+    $addPost = "INSERT INTO Feed (title, content)
+        VALUES ('$title','$text')";
+
+    mysqli_query($conn, $addPost);
+
+    $_SESSION['url'] = "homePage.php";
+}
+
+//Send to correct rl depending on previous interaction
 $url = $_SESSION['url'];
 header("Location:$url");
 
